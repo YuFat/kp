@@ -31,9 +31,6 @@ if(!isset($_SESSION['user'])){
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                     </ul>
                 </li>
@@ -50,9 +47,9 @@ if(!isset($_SESSION['user'])){
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                     Dashboard
                                 </a>
-                                <a class="nav-link" href="admin_siswa.php">
+                                <a class="nav-link" href="admin_pendaftar.php">
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                    Siswa
+                                    Pendaftar
                                 </a>
                                 <a class="nav-link" href="index.html">
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
@@ -65,12 +62,12 @@ if(!isset($_SESSION['user'])){
                             </div>
                         <?php endif ?>
 
-                        <!-- SISWA -->
-                        <?php if($_SESSION['user']['role'] == "siswa") : ?>
+                        <!-- PENDAFTAR -->
+                        <?php if($_SESSION['user']['role'] == "pendaftar") : ?>
                             <div class="nav">
                                 <a class="nav-link" href="index.html">
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                    Profil siswa
+                                    Profil pendaftar
                                 </a>
                                 <a class="nav-link" href="index.html">
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
@@ -89,7 +86,7 @@ if(!isset($_SESSION['user'])){
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        Start Bootstrap
+                        <?= $_SESSION['user']['username'] ?>
                     </div>
                 </nav>
             </div>

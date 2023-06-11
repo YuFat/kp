@@ -1,17 +1,17 @@
 <?php
 include("inc_header.php");
 
-$sql1 = "SELECT * FROM siswa"; // query menampilkan semua data dari tabel siswa
+$sql1 = "SELECT * FROM pendaftar"; // query menampilkan semua data dari tabel pendaftar
 $q1 = mysqli_query($koneksi, $sql1); // mengeksekusi syntax query
 
 ?>
 
-<h1 class="mt-4">Daftar Siswa</h1>
+<h1 class="mt-4">Daftar Pendaftar</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">Siswa</li>
+    <li class="breadcrumb-item active">Pendaftar</li>
 </ol>
 
-<table id="tabel-siswa" class="table table-striped" style="width:100%">
+<table id="tabel-pendaftar" class="table table-striped" style="width:100%">
     <thead>
         <th>No</th>
         <th>NISN</th>
@@ -29,9 +29,9 @@ $q1 = mysqli_query($koneksi, $sql1); // mengeksekusi syntax query
                 <td><?= $row['nama'] ?></td>
                 <td><?= $row['jns_kelamin'] ?></td>
                 <td>
-                    <button class="btn btn-warning mb-2">Lihat</button>
+                    <a href="admin_lihat_pendaftar.php?id=<?= $row['id_pendaftar'] ?>" class="btn btn-success mb-2">Lihat</a>
                     <div class="mx-2"></div>
-                    <button class="btn btn-danger">Hapus</button>
+                    <a href="admin_proses_hapus.php?id=<?= $row['id_pendaftar'] ?>" class="btn btn-danger" onclick="return confirm('Kamu yakin?')">Hapus</a>
                 </td>
             </tr>
         <?php endwhile; ?>
