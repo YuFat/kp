@@ -25,8 +25,6 @@ if (isset($_POST['login'])) {
     if (empty($err)) {
         if($r1['role'] == "admin") {
             $_SESSION['user'] = $r1;
-            // var_dump($_SESSION['user']);
-            // die();
             header("location:admin_depan.php");
         }else{
             $_SESSION['user'] = $r1;

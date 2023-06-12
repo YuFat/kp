@@ -2,7 +2,7 @@
 session_start();
 include("inc_koneksi.php");
 if(!isset($_SESSION['user'])){
-    header("location:login.php");
+    header("location:index.php");
 }
 ?> 
 
@@ -16,7 +16,8 @@ if(!isset($_SESSION['user'])){
         <meta name="author" content="" />
         <title>Dashboard - SB Admin</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.csss">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="style.css">
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
@@ -51,11 +52,11 @@ if(!isset($_SESSION['user'])){
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                     Pendaftar
                                 </a>
-                                <a class="nav-link" href="index.html">
+                                <!-- <a class="nav-link" href="">
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                     Artikel
-                                </a>
-                                <a class="nav-link" href="index.html">
+                                </a> -->
+                                <a class="nav-link" href="admin_pengumuman.php">
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                     Pengumuman
                                 </a>
@@ -73,10 +74,10 @@ if(!isset($_SESSION['user'])){
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                     Pendaftaran
                                 </a>
-                                <a class="nav-link" href="index.html">
+                                <!-- <a class="nav-link" href="index.html">
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                     Artikel
-                                </a>
+                                </a> -->
                                 <a class="nav-link" href="index.html">
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                     Pengumuman
