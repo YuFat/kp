@@ -24,6 +24,19 @@
             ],
         });
 
+        $('#tabel-artikel').DataTable({
+            columnDefs: [
+                { searchable: false, targets: 0 },
+                { orderable: false, searchable: false, targets: 4 }
+            ],
+        });
+
+        $('#tabel-artikel-user').DataTable({
+            columnDefs: [
+                { searchable: false, targets: 0 },
+            ],
+        });
+
         $('#pilih-pendaftar').select2();
     });
 </script>

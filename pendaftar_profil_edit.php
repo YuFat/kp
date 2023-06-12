@@ -49,10 +49,10 @@ if (isset($_POST['submit'])) {
   $fileError4 = $akta_kelahiran['error'];
   $uniqueFileName4 = 'akta/' . uniqid() . '_' . $fileName4;
 
-  $sql = "UPDATE FROM pendaftar SET nama = '$nama',nisn='$nisn',ttl='$ttl',agama='$agama',alamat='$alamat',no_hp'$no_hp',email='$email',jns_kelamin='$jns_kelamin',uniqueFileName1='$uniqueFileName1',uniqueFileName2='$uniqueFileName2',uniqueFileName3='$uniqueFileName3',uniqueFileName4='$uniqueFileName4' WHERE id_pendaftar=$id_pendaftar";
+  $sql = "UPDATE pendaftar SET nama = '$nama',nisn='$nisn',ttl='$ttl',agama='$agama',alamat='$alamat',no_hp'$no_hp',email='$email',jns_kelamin='$jns_kelamin',uniqueFileName1='$uniqueFileName1',uniqueFileName2='$uniqueFileName2',uniqueFileName3='$uniqueFileName3',uniqueFileName4='$uniqueFileName4' WHERE id_pendaftar=$id_pendaftar";
 
   if (mysqli_query($koneksi, $sql)) {
-      mysqli_query($koneksi, "UPDATE FROM ortu SET nama_ayah='$nama_ayah',nama_ibu'$nama_ibu',pekerjaan_ayah='$pekerjaan_ayah',pendidikan_ayah='$pendidikan_ayah',telp='$telp' WHERE id_pendaftar=$id_pendaftar");
+      mysqli_query($koneksi, "UPDATE ortu SET nama_ayah='$nama_ayah',nama_ibu'$nama_ibu',pekerjaan_ayah='$pekerjaan_ayah',pendidikan_ayah='$pendidikan_ayah',telp='$telp' WHERE id_pendaftar=$id_pendaftar");
       move_uploaded_file($fileTmpName1, $uniqueFileName1);
       move_uploaded_file($fileTmpName2, $uniqueFileName2);
       move_uploaded_file($fileTmpName3, $uniqueFileName3);
