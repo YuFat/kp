@@ -6,6 +6,8 @@ $sql1 = "SELECT * FROM pendaftar WHERE id_pendaftar = $id"; // query menampilkan
 $q1 = mysqli_query($koneksi, $sql1); // mengeksekusi syntax query
 $data = mysqli_fetch_assoc($q1);
 
+$data2 = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM ortu WHERE id_pendaftar = $id"));
+
 ?>
 
 <style>
@@ -89,6 +91,31 @@ $data = mysqli_fetch_assoc($q1);
         <td>Akta kelahiran</td>
         <td>:</td>
         <td><a href="<?= $data['akta_kelahiran'] ?>" target="__BLANK">Lihat akta kelahiran</a></td>
+    </tr>
+    <tr>
+        <td>Nama ayah</td>
+        <td>:</td>
+        <td><?= $data2['nama_ayah'] ?></td>
+    </tr>
+    <tr>
+        <td>Nama ibu</td>
+        <td>:</td>
+        <td><?= $data2['nama_ibu'] ?></td>
+    </tr>
+    <tr>
+        <td>Pekerjaan ayah</td>
+        <td>:</td>
+        <td><?= $data2['pekerjaan_ayah'] ?></td>
+    </tr>
+    <tr>
+        <td>Pendidikan ayah</td>
+        <td>:</td>
+        <td><?= $data2['pendidikan_ayah'] ?></td>
+    </tr>
+    <tr>
+        <td>Nomor HP</td>
+        <td>:</td>
+        <td><?= $data2['telp'] ?></td>
     </tr>
 </table>
 

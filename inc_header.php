@@ -24,7 +24,7 @@ if(!isset($_SESSION['user'])){
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
+            <a class="navbar-brand ps-3" href="index.html">PPDB</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar-->
@@ -52,10 +52,10 @@ if(!isset($_SESSION['user'])){
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                     Pendaftar
                                 </a>
-                                <!-- <a class="nav-link" href="">
+                                <a class="nav-link" href="admin_artikel.php">
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                     Artikel
-                                </a> -->
+                                </a>
                                 <a class="nav-link" href="admin_pengumuman.php">
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                     Pengumuman
@@ -66,21 +66,13 @@ if(!isset($_SESSION['user'])){
                         <!-- PENDAFTAR -->
                         <?php if($_SESSION['user']['role'] == "pendaftar") : ?>
                             <div class="nav">
-                                <a class="nav-link" href="index.html">
+                                <a class="nav-link" href="pendaftar_profil.php">
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                     Profil pendaftar
                                 </a>
-                                <a class="nav-link" href="index.html">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                    Pendaftaran
-                                </a>
-                                <!-- <a class="nav-link" href="index.html">
+                                <a class="nav-link" href="pendaftar_artikel.php">
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                     Artikel
-                                </a> -->
-                                <a class="nav-link" href="index.html">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                    Pengumuman
                                 </a>
                             </div>
                         <?php endif ?>

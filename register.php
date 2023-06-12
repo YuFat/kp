@@ -11,28 +11,36 @@ include("inc_koneksi.php");
 $username = "";
 $password = "";
 $err = "";
-if (isset($_POST['login'])) {
+if (isset($_POST['register'])) {
     $username   = $_POST['username'];
-    $password   = $_POST['password'];
+    $password   = md5($_POST['password']);
+    $password2   = md5($_POST['password2']);
     if ($username == '' or $password == '') {
         $err .= "Silakan masukkan username dan password. ";
+    }
+    if ($password != $password2) {
+        $err .= "Konfirmasi password tidak sama. ";
     }
     if (empty($err)) {
         $sql1 = "SELECT * FROM user WHERE username = '$username'";
         $q1 = mysqli_query($koneksi, $sql1);
-        $r1 = mysqli_fetch_assoc($q1);
-        if (!isset($r1['password']) || $r1['password'] != md5($password)) {
-            $err .= "Username atau password salah. ";
+        $r1 = mysqli_num_rows($q1);
+        if ($r1 > 0) {
+            $err .= "Username sudah ada, harap ganti username. ";
         }
     }
-    // KONDISI LOGIN SUKSES
+    // KONDISI REGISTER SUKSES
     if (empty($err)) {
-        if($r1['role'] == "admin") {
-            $_SESSION['user'] = $r1;
-            header("location:admin_depan.php");
-        }else{
+        $sql2 = "INSERT INTO user (username, password) VALUES ('$username', '$password')";
+        if(mysqli_query($koneksi, $sql2)) {
+            $sql1 = "SELECT * FROM user ORDER BY id_user DESC";
+            $q1 = mysqli_query($koneksi, $sql1);
+            $r1 = mysqli_fetch_assoc($q1);
+
             $_SESSION['user'] = $r1;
             header("location:pendaftar_profil.php");
+        }else{
+            $err .= "Terjadi kesalahan pada server";
         }
     }
 }
@@ -62,7 +70,7 @@ if (isset($_POST['login'])) {
                             </div>
                             <div class="col-lg-6">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Buat akun baru</h3></div>
                                     <div class="card-body">
                                         <form method="POST" action="">
                                             <?php if(!empty($err)) : ?>
@@ -70,20 +78,21 @@ if (isset($_POST['login'])) {
                                             <?php endif; ?>
 
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="username" type="text" placeholder="Masukan username" value="admin" autofocus />
+                                                <input class="form-control" name="username" type="text" placeholder="Masukan username" value="user" autofocus />
                                                 <label>Username</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="password" type="password" placeholder="Masukan password" value="admin" />
+                                                <input class="form-control" name="password" type="password" placeholder="Masukan password" value="user" />
                                                 <label>Password</label>
                                             </div>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" name="password2" type="password" placeholder="Masukan konfirmasi password" value="user" />
+                                                <label>Konfirmasi password</label>
+                                            </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <button type="submit" name="login" class="btn btn-primary">Login</button>
+                                                <button type="submit" name="register" class="btn btn-primary">Register</button>
                                             </div>
                                         </form>
-                                    </div>
-                                    <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="register.php">Belum punya akun? Daftar sekarang!</a></div>
                                     </div>
                                 </div>
                             </div>
