@@ -4,7 +4,7 @@ include("inc_header.php");
 $id_user = $_SESSION['user']['id_user'];
 $q = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM user WHERE id_user = $id_user"));
 
-$id_pendaftar = $q['id_pendaftar'];
+$id_pendaftar = $q['id_pendaftar'] ?? 0;
 $sql = mysqli_query($koneksi, "SELECT * FROM pendaftar WHERE id_pendaftar = $id_pendaftar");
 $num = mysqli_num_rows($sql);
 

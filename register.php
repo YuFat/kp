@@ -31,7 +31,7 @@ if (isset($_POST['register'])) {
     }
     // KONDISI REGISTER SUKSES
     if (empty($err)) {
-        $sql2 = "INSERT INTO user (username, password) VALUES ('$username', '$password')";
+        $sql2 = "INSERT INTO user (username, password, role) VALUES ('$username', '$password', 'pendaftar')";
         if(mysqli_query($koneksi, $sql2)) {
             $sql1 = "SELECT * FROM user ORDER BY id_user DESC";
             $q1 = mysqli_query($koneksi, $sql1);
