@@ -2,7 +2,8 @@
 
 include("inc_header.php");
 
-$sql1 = "SELECT * FROM pendaftar"; // query menampilkan semua data dari tabel pendaftar
+$id = $_GET['id'];
+$sql1 = "SELECT * FROM pendaftar WHERE id_pendaftar = $id"; // query menampilkan semua data dari tabel pendaftar
 $q1 = mysqli_query($koneksi, $sql1); // mengeksekusi syntax query
 $data = mysqli_fetch_assoc($q1); // mengubah data bentuk query menjadi array
 
