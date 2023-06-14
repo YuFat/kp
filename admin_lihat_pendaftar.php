@@ -8,6 +8,8 @@ $data = mysqli_fetch_assoc($q1);
 
 $data2 = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM ortu WHERE id_pendaftar = $id"));
 
+$cek = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM validasi WHERE id_pendaftar = $id"));
+
 ?>
 
 <style>
@@ -20,13 +22,33 @@ $data2 = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM ortu WHERE id_
     }
 </style>
 
-<h1 class="mt-4">Detail Pendaftar</h1>
+<h1 class="mt-4 d-flex justify-content-between">
+    <span>Detail Pendaftar</span>
+    <div>
+        <?php if(is_null($cek)) : ?>
+            <a href="admin_pendaftar_proses_valid.php?id=<?= $id?>" class="btn btn-success">Valid</a>
+            <a href="admin_pendaftar_tambah_valid.php?id=<?= $id?>" class="btn btn-danger">Tambah catatan</a>
+        <?php else : ?>
+            <?php if($cek['status'] == 'sudah') : ?>
+                <button type="button" class="btn btn-success">Valid</button>
+            <?php elseif($cek['status'] == 'masalah') : ?>
+                <a href="admin_pendaftar_proses_valid.php?id=<?= $id?>" class="btn btn-success">Valid</a>
+                <a href="admin_pendaftar_edit_valid.php?id=<?= $id?>" class="btn btn-danger">Edit catatan</a>
+            <?php endif; ?>
+        <?php endif; ?>
+    </div>
+</h1>
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item">Pendaftar</li>
     <li class="breadcrumb-item active">Detail pendaftar</li>
 </ol>
 
 <table class="table">
+    <tr>
+        <td>Catatan validasi</td>
+        <td>:</td>
+        <td><?= $cek['catatan'] ?? '-' ?></td>
+    </tr>
     <tr>
         <td>Nilai rata-rata</td>
         <td>:</td>
@@ -48,7 +70,7 @@ $data2 = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM ortu WHERE id_
         <td><?= $data['jns_kelamin'] ?></td>
     </tr>
     <tr>
-        <td>Tempat, tanggal lahir</td>
+        <td>Tanggal lahir</td>
         <td>:</td>
         <td><?= date('d-m-Y', strtotime($data['ttl'])) ?></td>
     </tr>

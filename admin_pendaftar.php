@@ -1,7 +1,7 @@
 <?php
 include("inc_header.php");
 
-$sql1 = "SELECT * FROM pendaftar"; // query menampilkan semua data dari tabel pendaftar
+$sql1 = "SELECT * FROM pendaftar LEFT JOIN validasi USING(id_pendaftar)"; // query menampilkan relasi data pendaftar dan validasi. Tetap tampilkan data pendaftar walau validasi kosong
 $q1 = mysqli_query($koneksi, $sql1); // mengeksekusi syntax query
 
 ?>
@@ -11,7 +11,7 @@ $q1 = mysqli_query($koneksi, $sql1); // mengeksekusi syntax query
         width: 5%;
         text-align: center;
     }
-    .table tr td:nth-child(6) {
+    .table tr td:nth-child(7) {
         width: 30%;
     }
 </style>
@@ -29,6 +29,7 @@ $q1 = mysqli_query($koneksi, $sql1); // mengeksekusi syntax query
             <th>Nama</th>
             <th>Jenis kelamin</th>
             <th>Nilai</th>
+            <th>Status validasi</th>
             <th>Aksi</th>
         </thead>
         <tbody>
@@ -41,6 +42,7 @@ $q1 = mysqli_query($koneksi, $sql1); // mengeksekusi syntax query
                     <td><?= $row['nama'] ?></td>
                     <td><?= $row['jns_kelamin'] ?></td>
                     <td><?= $row['nilai'] ?? '-' ?></td>
+                    <td><?= $row['status'] ?? '-' ?></td>
                     <td>
                         <a href="admin_pendaftar_edit.php?id=<?= $row['id_pendaftar'] ?>" class="btn btn-warning">Edit Nilai</a>
                         <span class="mx-1"></span>

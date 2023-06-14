@@ -20,7 +20,7 @@
         $('#tabel-pendaftar').DataTable({
             columnDefs: [
                 { searchable: false, targets: 0 },
-                { orderable: false, searchable: false, targets: 5 }
+                { orderable: false, searchable: false, targets: 6 }
             ],
         });
 

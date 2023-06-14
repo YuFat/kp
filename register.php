@@ -66,7 +66,7 @@ if (isset($_POST['register'])) {
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-6">
-                                <img src="https://placehold.co/600x400" class="img-fluid mt-5">
+                                <img src="siswa.png" class="img-fluid mt-5">
                             </div>
                             <div class="col-lg-6">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
